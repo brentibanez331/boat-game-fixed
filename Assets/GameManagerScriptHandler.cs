@@ -25,6 +25,7 @@ public class GameManagerScript : MonoBehaviour
     //SFX
     public AudioSource alarmSFX;
     public AudioSource tickSFX;
+    public AudioSource levelCompleteFX;
 
     private void Awake()
     {
@@ -169,6 +170,7 @@ public class GameManagerScript : MonoBehaviour
             {
                 HideGoal();
                 OpenResult();
+                levelCompleteFX.Play();
                 playTimer = false;
                 mainMenu.PauseGame(vCam);
                 resultText.text = "LEVEL COMPLETE!";
