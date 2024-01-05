@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
 using System.Diagnostics.Tracing;
+using Unity.PlasticSCM.Editor.WebApi;
 
 public class MainMenu : MonoBehaviour
 {
@@ -35,6 +36,17 @@ public class MainMenu : MonoBehaviour
     {
         print("menu opening");
         menuAnim.SetBool("MenuIsClosed", false);
+    }
+
+    public void GoToHome()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartGame()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(sceneName);
     }
 
     public void CloseMenu()
@@ -71,6 +83,12 @@ public class MainMenu : MonoBehaviour
     public string GetButtonName()
     {
         return buttonName;
+    }
+
+    public void NextScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
     public void PauseGame(CinemachineFreeLook vCam)

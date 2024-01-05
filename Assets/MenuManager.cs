@@ -29,5 +29,10 @@ public class MenuManager : MonoBehaviour
         {
 
         }
+
+        if (mainMenu.GetButtonName().Equals("home"))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }

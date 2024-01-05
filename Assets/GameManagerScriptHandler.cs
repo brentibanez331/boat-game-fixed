@@ -37,6 +37,11 @@ public class GameManagerScript : MonoBehaviour
         {
             OpenTutorial();
         }
+        else
+        {
+            CloseTutorial();
+            OpenQuest();
+        }
         //OpenQuest();
         CloseResult();
         HideGoal();
