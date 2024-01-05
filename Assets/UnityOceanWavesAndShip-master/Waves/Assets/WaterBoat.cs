@@ -35,6 +35,9 @@ public class WaterBoat : MonoBehaviour
     ScoreManager scoreManager;
     [SerializeField]
 
+    //crate Audio
+    public AudioSource crateFX;
+
     public void Awake()
     {
         //PickupButton.SetActive(false);

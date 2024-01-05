@@ -22,6 +22,10 @@ public class GameManagerScript : MonoBehaviour
     public RetrieveObject retrieveObj;
     public int goodsCollected;
 
+    //SFX
+    public AudioSource alarmSFX;
+    public AudioSource tickSFX;
+
     private void Awake()
     {
         for(int i = 0; i < retrieveObj.starUI.Length; i++)
@@ -114,11 +118,25 @@ public class GameManagerScript : MonoBehaviour
 
             if(remainingTime <= 3)
             {
-                //Play Warning Audio
+                if(remainingTime <= 3 && remainingTime > 2.6f)
+                {
+                    tickSFX.Play();
+                }
+                if (remainingTime <= 2 && remainingTime > 1.6f)
+                {
+                    tickSFX.Play();
+                }
+                if (remainingTime <= 1 && remainingTime > .6f)
+                {
+                    tickSFX.Play();
+                }
 
                 timerText.color = Color.red;
             }
-
+            if(remainingTime <= 0 && remainingTime >= -0.1)
+            {
+                alarmSFX.Play();
+            }
             if(remainingTime <= 0 && goodsCollected < maxGoods)
             {
                 //Stop Warning Audio

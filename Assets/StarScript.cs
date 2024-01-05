@@ -7,6 +7,9 @@ public class StarScript : MonoBehaviour
     public GameManagerScript gameManager;
     public RetrieveObject retrieveObj;
 
+    //sfx
+    public AudioSource starFX;
+
     public void AnimateStar()
     {   
         if(gameManager.starCount != 0)
@@ -22,6 +25,6 @@ public class StarScript : MonoBehaviour
 
     public void AudioPlay()
     {
-        //PLAY AUDIO
+        starFX.Play();
     }
 }
