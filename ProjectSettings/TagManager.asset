@@ -9,6 +9,7 @@ TagManager:
   - FloatingObj
   - CinemachineCam
   - GameManager
+  - Wall
   layers:
   - Default
   - TransparentFX

@@ -35,6 +35,7 @@ public class WaterBoat : MonoBehaviour
     //crate Audio
     public AudioSource crateFX;
 
+
     public void Awake()
     {
         //PickupButton.SetActive(false);
@@ -56,8 +57,8 @@ public class WaterBoat : MonoBehaviour
         }
         else
         {
-            SteerPower = 200f;
-            Power = 30;
+            SteerPower = 50f;
+            Power = 5;
         }
 
         //default direction
@@ -65,11 +66,11 @@ public class WaterBoat : MonoBehaviour
         var steer = 0;
 
         //steer direction [-1,0,1]
-        if (dirX < -0.3)
+        if (dirX < -0.2)
             steer = 1;
-        if (dirX > 0.3)
+        if (dirX > 0.2)
             steer = -1;
-        if (dirX >= -0.3 && dirX <= 0.3)
+        if (dirX >= -0.2 && dirX <= 0.2)
         {
             steer = 0;
             Rigidbody.angularVelocity = new Vector3(Rigidbody.angularVelocity.x, 0, Rigidbody.angularVelocity.z);
