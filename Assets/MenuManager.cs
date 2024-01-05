@@ -30,6 +30,11 @@ public class MenuManager : MonoBehaviour
 
         }
 
+        if (mainMenu.GetButtonName().Equals("levels"))
+        {
+            SceneManager.LoadScene("ChooseLevel");
+        }
+
         if (mainMenu.GetButtonName().Equals("home"))
         {
             SceneManager.LoadScene("MainMenu");
