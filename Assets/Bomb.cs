@@ -45,7 +45,7 @@ public class Bomb : MonoBehaviour
             Destroy(gameObject, 3.0f);
 
             gameManager.goodsCollected = 0;
-            gameManager.starCount = 0;
+            gameManager.starCount = 0;  
 
             gameManager.HideGoal();
             gameManager.OpenResult();
