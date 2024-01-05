@@ -4,27 +4,37 @@ using UnityEngine;
 
 public class Level1_ResultManager : MonoBehaviour
 {
-    public GameManager gameManager;
-    int starCount = 0;
-
-    //This script is unique per level for checking varying winning conditions
-    void Start()
-    {
-        
-    }
+    public GameManagerScript gameManager;
+    float elapsedTime;
+    public float time_1;
+    public float time_2;
+    int index = -1;
+    bool gameDone = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.goodsCollected >= gameManager.maxGoods)
+        if (!gameDone)
         {
-            gameManager.playTimer = false;
-            AddStar();
+            if (gameManager.goodsCollected >= gameManager.maxGoods)
+            {
+                gameDone = true;
+                elapsedTime = gameManager.remainingTime;
+                gameManager.AddStar();
+
+                if (elapsedTime >= time_1)
+                {
+                    gameManager.AddStar();
+                }
+                if (elapsedTime >= time_2)
+                {
+                    gameManager.AddStar();
+                }
+            }
         }
     }
 
-    void AddStar()
-    {
-        starCount++;
-    }
+    
+
+    
 }

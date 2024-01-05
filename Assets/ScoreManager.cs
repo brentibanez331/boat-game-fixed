@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private TMP_Text text;
     public int score = 0; 
-    public GameManager gameManager;
+    public GameManagerScript gameManager;
     int maxGoods;
 
     private void Start()

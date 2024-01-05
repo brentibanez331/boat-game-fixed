@@ -51,13 +51,11 @@ public class MainMenu : MonoBehaviour
     public void CloseSettings()
     {
         settingsAnim.SetBool("SettingsIsClosed", true);
-        Debug.Log("This is played");
     }
 
     public void SetButtonName(string buttonName_)
     {
         buttonName = buttonName_;
-        print(buttonName);
     }
 
     public void HideObject(GameObject objectToHide)
@@ -79,6 +77,8 @@ public class MainMenu : MonoBehaviour
     {
         gameIsPaused = true;
         vCam.Follow = null;
+        vCam.m_XAxis.m_MaxSpeed = 0;
+        vCam.m_YAxis.m_MaxSpeed = 0;
         vCam.LookAt = null;
     }
 
@@ -91,6 +91,8 @@ public class MainMenu : MonoBehaviour
     {
         gameIsPaused = false;
         vCam.Follow = followTarget.transform;
+        vCam.m_XAxis.m_MaxSpeed = 100;
+        vCam.m_YAxis.m_MaxSpeed = 2;
         vCam.LookAt = followTarget.transform;
     }
 }

@@ -56,8 +56,8 @@ public class WaterBoat : MonoBehaviour
         }
         else
         {
-            SteerPower = 50f;
-            Power = 1;
+            SteerPower = 200f;
+            Power = 30;
         }
 
         //default direction
@@ -85,8 +85,9 @@ public class WaterBoat : MonoBehaviour
         var targetVel = Vector3.zero;
 
         //forward/backward poewr
-        if (dirZ < -0.3)
+        if (Input.GetTouch(0).phase == TouchPhase.Stationary)
         {
+            print("You are pressing the screen");
             PhysicsHelper.ApplyForceToReachVelocity(Rigidbody, forward * MaxSpeed, Power);
             //print("Forward Velocity: " + Rigidbody.velocity);
         }
@@ -95,11 +96,11 @@ public class WaterBoat : MonoBehaviour
             PhysicsHelper.ApplyForceToReachVelocity(Rigidbody, -forward * MaxSpeed, Power);
             //print("Reverse Velocity: " + Rigidbody.velocity);
         }*/
-        if(dirZ >= -0.3)
+        /*if(dirZ >= -0.3)
         {
             //PhysicsHelper.ApplyForceToReachVelocity(Rigidbody, forward * 0, 0);
             Rigidbody.velocity = new Vector3(0, Rigidbody.velocity.y, 0);
-        }
+        }*/
         
         //print(Rigidbody.velocity);
         //Motor Animation // Particle system

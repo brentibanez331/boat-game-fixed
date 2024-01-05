@@ -1,11 +1,12 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManagerScript : MonoBehaviour
 {
     public Animator questAnim;
     public Animator helpAnim;
@@ -15,18 +16,20 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public float remainingTime;
     public TextMeshProUGUI resultText;
-
-    public GameObject TimerUI;
-    public GameObject ScoreUI;
-    public GameObject ResultUI;
-
+    public int starCount = 0;
     public int maxGoods;
-    [HideInInspector]
+    public int index = 0;
+    public RetrieveObject retrieveObj;
     public int goodsCollected;
 
     private void Awake()
     {
-        if(SceneManager.GetActiveScene().name == "MainScene")
+        for(int i = 0; i < retrieveObj.starUI.Length; i++)
+        {
+            retrieveObj.starUI[i].SetBool("playStar", false);
+        }
+        
+        if (SceneManager.GetActiveScene().name == "MainScene")
         {
             OpenTutorial();
         }
@@ -38,15 +41,15 @@ public class GameManager : MonoBehaviour
 
     public void ShowGoal()
     {
-        TimerUI.GetComponent<Animator>().SetBool("TimerIsClosed", false);
-        ScoreUI.GetComponent<Animator>().SetBool("ScoreIsClosed", false);
+        retrieveObj.TimerUI.GetComponent<Animator>().SetBool("TimerIsClosed", false);
+        retrieveObj.ScoreUI.GetComponent<Animator>().SetBool("ScoreIsClosed", false);
         playTimer = true;
     }
 
     public void HideGoal()
     {
-        TimerUI.GetComponent<Animator>().SetBool("TimerIsClosed", true);
-        ScoreUI.GetComponent<Animator>().SetBool("ScoreIsClosed", true);
+        retrieveObj.TimerUI.GetComponent<Animator>().SetBool("TimerIsClosed", true);
+        retrieveObj.ScoreUI.GetComponent<Animator>().SetBool("ScoreIsClosed", true);
     }
 
     public void OpenTutorial()
@@ -81,12 +84,18 @@ public class GameManager : MonoBehaviour
 
     public void OpenResult()
     {
-        ResultUI.GetComponent<Animator>().SetBool("ResultIsClosed", false);
+        retrieveObj.ResultUI.GetComponent<Animator>().SetBool("ResultIsClosed", false);
     }
 
     public void CloseResult()
     {
-        ResultUI.GetComponent<Animator>().SetBool("ResultIsClosed", true);
+        retrieveObj.ResultUI.GetComponent<Animator>().SetBool("ResultIsClosed", true);
+    }
+
+    public void AddStar()
+    {
+        starCount++;
+        print(starCount);
     }
 
     private void Update()
@@ -105,29 +114,47 @@ public class GameManager : MonoBehaviour
 
             if(remainingTime <= 3)
             {
+                //Play Warning Audio
+
                 timerText.color = Color.red;
             }
 
             if(remainingTime <= 0 && goodsCollected < maxGoods)
             {
-                //remainingTime = 0;
+                //Stop Warning Audio
+
+
                 minutes = 0;
                 seconds = 0;    
                 timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-                //Show GameOver Screen
-                print("GameOver");
                 if(remainingTime < -2)
                 {
                     remainingTime = 0;
                     HideGoal();
                     OpenResult();
-                    //Calculate result
-                    resultText.text = "LEVEL FAILED!";
+                    playTimer = false;
+                    mainMenu.PauseGame(vCam);
+
+                    if (goodsCollected <= maxGoods)
+                    {
+                        resultText.text = "LEVEL FAILED!";
+                    }
                 }
-                
+            }
+
+            if(remainingTime > 0 && goodsCollected >= maxGoods)
+            {
+                HideGoal();
+                OpenResult();
+                playTimer = false;
+                mainMenu.PauseGame(vCam);
+                resultText.text = "LEVEL COMPLETE!";
             }
         }
+    }
 
-        
+    public void AddScore()
+    {
+        goodsCollected++;
     }
 }

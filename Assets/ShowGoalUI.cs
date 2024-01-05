@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShowGoalUI : MonoBehaviour
 {
-    public GameManager gameManager;
+    public GameManagerScript gameManager;
     public MainMenu mainMenu;
 
     public void ShowUIObjects()
