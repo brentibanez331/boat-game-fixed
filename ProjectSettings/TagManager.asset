@@ -7,6 +7,8 @@ TagManager:
   - Bomb
   - Goods
   - FloatingObj
+  - CinemachineCam
+  - GameManager
   layers:
   - Default
   - TransparentFX
