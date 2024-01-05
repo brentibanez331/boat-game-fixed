@@ -23,9 +23,6 @@ public class WaterBoat : MonoBehaviour
     //internal Properties
     protected Vector3 CamVel;
 
-    [SerializeField]
-    GameObject PickupButton;
-
     bool collidedFloatingObj;
     GameObject FloatingObj;
 
@@ -131,7 +128,6 @@ public class WaterBoat : MonoBehaviour
             FloatingObj.GetComponent<WaterFloat>().enabled = false;
             FloatingObj.GetComponent<Rigidbody>().drag = 0;
             FloatingObj.GetComponent<Rigidbody>().useGravity = true;
-            PickupButton.SetActive(false);
             Destroy(FloatingObj, 3.0f);
         }
     }
@@ -142,17 +138,7 @@ public class WaterBoat : MonoBehaviour
         {
             collidedFloatingObj = true;
             FloatingObj = other.gameObject;
-            PickupButton.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Goods")
-        {
-            collidedFloatingObj = false;
-            FloatingObj = null;
-            PickupButton.SetActive(false);
+            DestroyObject();
         }
     }
 }

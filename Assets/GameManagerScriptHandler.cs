@@ -40,7 +40,7 @@ public class GameManagerScript : MonoBehaviour
         else
         {
             CloseTutorial();
-            OpenQuest();
+            OpenQuest();    
         }
         //OpenQuest();
         CloseResult();

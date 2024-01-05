@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour
     public void AddScore()
     {
         score++;
+        gameManager.goodsCollected = score;
         text.text = score.ToString() + "/" + maxGoods.ToString();
     }
 }
