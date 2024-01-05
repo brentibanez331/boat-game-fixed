@@ -11,12 +11,14 @@ public class GameManager : MonoBehaviour
     public Animator helpAnim;
     public MainMenu mainMenu;
     public CinemachineFreeLook vCam;
-    bool playTimer = false;
+    public bool playTimer = false;
     public TextMeshProUGUI timerText;
     public float remainingTime;
+    public TextMeshProUGUI resultText;
 
     public GameObject TimerUI;
     public GameObject ScoreUI;
+    public GameObject ResultUI;
 
     public int maxGoods;
     [HideInInspector]
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
             OpenTutorial();
         }
         //OpenQuest();
+        CloseResult();
         HideGoal();
         mainMenu.PauseGame(vCam);
     }
@@ -76,6 +79,16 @@ public class GameManager : MonoBehaviour
         playTimer = true;
     }
 
+    public void OpenResult()
+    {
+        ResultUI.GetComponent<Animator>().SetBool("ResultIsClosed", false);
+    }
+
+    public void CloseResult()
+    {
+        ResultUI.GetComponent<Animator>().SetBool("ResultIsClosed", true);
+    }
+
     private void Update()
     {
         if (playTimer)
@@ -90,6 +103,11 @@ public class GameManager : MonoBehaviour
                 //Player won Game
             }
 
+            if(remainingTime <= 3)
+            {
+                timerText.color = Color.red;
+            }
+
             if(remainingTime <= 0 && goodsCollected < maxGoods)
             {
                 //remainingTime = 0;
@@ -102,6 +120,9 @@ public class GameManager : MonoBehaviour
                 {
                     remainingTime = 0;
                     HideGoal();
+                    OpenResult();
+                    //Calculate result
+                    resultText.text = "LEVEL FAILED!";
                 }
                 
             }
