@@ -136,6 +136,7 @@ public class WaterBoat : MonoBehaviour
     {
         if (other.gameObject.tag == "Goods")
         {
+            crateFX.Play();
             collidedFloatingObj = true;
             FloatingObj = other.gameObject;
             DestroyObject();

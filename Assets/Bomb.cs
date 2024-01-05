@@ -12,6 +12,10 @@ public class Bomb : MonoBehaviour
     GameManagerScript gameManager;
     CinemachineFreeLook vCam;
 
+    //audio
+    public AudioSource bombFX;
+    public AudioSource defeatFX;
+
 
     private void Awake()
     {
@@ -30,6 +34,11 @@ public class Bomb : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            //audio
+            bombFX.Play();
+            defeatFX.Play();
+
+
             bomb.enabled = false;
             Explode();
             Destroy(other.gameObject);
