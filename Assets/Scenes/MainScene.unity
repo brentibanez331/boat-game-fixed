@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17277355, g: 0.2158997, b: 0.29783309, a: 1}
+  m_IndirectSpecularColor: {r: 0.17277355, g: 0.21589974, b: 0.2978331, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4193,7 +4193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429218675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06770723, y: -0.011815622, z: 0.0008018996, w: 0.99763495}
+  m_LocalRotation: {x: 0.06770722, y: -0.011815593, z: 0.00080189726, w: 0.99763495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5016,7 +5016,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.049549576, y: -0.011828251, z: 0.00058684684, w: 0.99870145}
+  m_LocalRotation: {x: 0.049549576, y: -0.0118282605, z: 0.00058684725, w: 0.99870145}
   m_LocalPosition: {x: 90.37236, y: 6.267097, z: 132.41708}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12472,7 +12472,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723432827}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04954957, y: -0.011828252, z: 0.00058684684, w: 0.99870145}
+  m_LocalRotation: {x: 0.04954957, y: -0.011828257, z: 0.000586847, w: 0.99870145}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18611,8 +18611,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
-  time_1: 5
-  time_2: 8
+  time_1: 60
+  time_2: 150
 --- !u!4 &1972476064
 Transform:
   m_ObjectHideFlags: 0
@@ -19446,10 +19446,10 @@ MonoBehaviour:
   vCam: {fileID: 2065278579}
   playTimer: 0
   timerText: {fileID: 235151975}
-  remainingTime: 10
+  remainingTime: 180
   resultText: {fileID: 1146464654}
   starCount: 0
-  maxGoods: 1
+  maxGoods: 5
   index: 0
   retrieveObj: {fileID: 99426122}
   goodsCollected: 0
