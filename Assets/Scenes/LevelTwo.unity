@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17277355, g: 0.2158997, b: 0.29783309, a: 1}
+  m_IndirectSpecularColor: {r: 0.17277355, g: 0.21589974, b: 0.2978331, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3505,7 +3505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5b9b87d6cb2a3634b8c312a3ca919feb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0057fb84f4eb55f4d966da2ac4bb501e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6191,7 +6191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429218675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06771013, y: -0.0074801403, z: 0.0005076606, w: 0.9976769}
+  m_LocalRotation: {x: 0.06771015, y: -0.0074801752, z: 0.0005076632, w: 0.99767685}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7187,7 +7187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.049551703, y: -0.007488121, z: 0.00037151598, w: 0.9987435}
+  m_LocalRotation: {x: 0.049551703, y: -0.00748819, z: 0.0003715194, w: 0.9987435}
   m_LocalPosition: {x: 90.22898, y: 6.267097, z: 139.92432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -21953,7 +21953,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723432827}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.049551696, y: -0.007488137, z: 0.00037151674, w: 0.9987435}
+  m_LocalRotation: {x: 0.049551696, y: -0.007488172, z: 0.00037151846, w: 0.9987435}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -28242,7 +28242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825900221}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.031424884, y: -0.0074936794, z: 0.00023561099, w: 0.999478}
+  m_LocalRotation: {x: 0.031424887, y: -0.007493645, z: 0.00023560994, w: 0.999478}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -29380,8 +29380,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
-  time_1: 5
-  time_2: 8
+  time_1: 120
+  time_2: 90
 --- !u!4 &1972476064
 Transform:
   m_ObjectHideFlags: 0
@@ -31448,10 +31448,10 @@ MonoBehaviour:
   vCam: {fileID: 2065278579}
   playTimer: 0
   timerText: {fileID: 235151975}
-  remainingTime: 10
+  remainingTime: 150
   resultText: {fileID: 1146464654}
   starCount: 0
-  maxGoods: 1
+  maxGoods: 7
   index: 0
   retrieveObj: {fileID: 99426122}
   goodsCollected: 0
