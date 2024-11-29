@@ -3,15 +3,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(WaterFloat))]
 public class WaterBoat : MonoBehaviour
 {
     //visible Properties
     public Transform Motor;
-    public float SteerPower = 200f;
+    [Header("Boat Speed")]
     public float Power = 5f;
     public float MaxSpeed = 10f;
+    [Header("Boat Rotation")]
+    public float SteerPower = 200f;
     public float Drag = 0.1f;
 
     //used Components
@@ -35,6 +38,11 @@ public class WaterBoat : MonoBehaviour
     //crate Audio
     public AudioSource crateFX;
 
+    public InputActionReference rotationAction;
+    public InputActionReference velocityAction;
+
+
+    private Vector3 angularVector;
 
     public void Awake()
     {
@@ -47,8 +55,20 @@ public class WaterBoat : MonoBehaviour
 
     public void FixedUpdate()
     {
-        float dirX = Input.acceleration.x;
-        float dirZ = Input.acceleration.z;
+        //float dirX = Input.acceleration.x;
+        //float dirZ = Input.acceleration.z;
+        //float dirX = playerControls.ReadValue<Vector2>().x;
+        //float dirZ = playerControls.ReadValue<Vector2>().y;
+
+        Vector2 rotation = rotationAction.action.ReadValue<Vector2>();
+        Vector2 velocity = velocityAction.action.ReadValue<Vector2>();
+
+
+        float dirX = rotation.x;
+        float dirZ = velocity.y;
+
+        //print(dirZ);
+        //print(dirX);
 
         if (Menu.gameIsPaused)
         {
@@ -57,7 +77,7 @@ public class WaterBoat : MonoBehaviour
         }
         else
         {
-            SteerPower = 50f;
+            SteerPower = 200f;
             Power = 5;
         }
 
@@ -73,25 +93,33 @@ public class WaterBoat : MonoBehaviour
         if (dirX >= -0.2 && dirX <= 0.2)
         {
             steer = 0;
-            Rigidbody.angularVelocity = new Vector3(Rigidbody.angularVelocity.x, 0, Rigidbody.angularVelocity.z);
+            angularVector = new Vector3(Rigidbody.angularVelocity.x, 0, Rigidbody.angularVelocity.z);
+            //print(angularVector);
+            Rigidbody.angularVelocity = angularVector;
         }
-            
-       
+
+        //print(steer);
+
+
         //Rotational Force
-        Rigidbody.AddForceAtPosition(steer * transform.right * SteerPower / 100f, Motor.position);
+        Vector3 force = steer * transform.right * SteerPower / 100f;
+        Rigidbody.AddForceAtPosition(force, Motor.position);
+        
 
         //compute vectors
         //var forward = Vector3.Scale(new Vector3(1,0,1), transform.forward);
-        var forward = transform.forward;
+        var forward = transform.forward * dirZ;
         var targetVel = Vector3.zero;
 
+        PhysicsHelper.ApplyForceToReachVelocity(Rigidbody, forward * MaxSpeed, Power);
+
         //forward/backward poewr
-        if (Input.GetTouch(0).phase == TouchPhase.Stationary)
-        {
-            print("You are pressing the screen");
-            PhysicsHelper.ApplyForceToReachVelocity(Rigidbody, forward * MaxSpeed, Power);
-            //print("Forward Velocity: " + Rigidbody.velocity);
-        }
+        //if (Input.GetTouch(0).phase == TouchPhase.Stationary)
+        //{
+        //    print("You are pressing the screen");
+        //    PhysicsHelper.ApplyForceToReachVelocity(Rigidbody, forward * MaxSpeed, Power);
+        //    //print("Forward Velocity: " + Rigidbody.velocity);
+        //}
         /* if (dirZ > 0.4)
         {
             PhysicsHelper.ApplyForceToReachVelocity(Rigidbody, -forward * MaxSpeed, Power);
@@ -102,7 +130,7 @@ public class WaterBoat : MonoBehaviour
             //PhysicsHelper.ApplyForceToReachVelocity(Rigidbody, forward * 0, 0);
             Rigidbody.velocity = new Vector3(0, Rigidbody.velocity.y, 0);
         }*/
-        
+
         //print(Rigidbody.velocity);
         //Motor Animation // Particle system
         Motor.SetPositionAndRotation(Motor.position, transform.rotation * StartRotation * Quaternion.Euler(0, 30f * steer, 0));

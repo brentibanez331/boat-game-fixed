@@ -6,7 +6,7 @@ public class DayNightCycle : MonoBehaviour
 {
     [SerializeField] private Light sun;
 
-    [SerializeField, Range(0,24)] private float timeOfDay;
+    [SerializeField, Range(0,30)] private float timeOfDay;
 
     [SerializeField] private float sunRotationSpeed;
 
@@ -18,7 +18,7 @@ public class DayNightCycle : MonoBehaviour
     void Update()
     {
         timeOfDay += Time.deltaTime * sunRotationSpeed;
-        if (timeOfDay > 24)
+        if (timeOfDay > 30)
             timeOfDay = 0;
         SunRotation();
         UpdateLighting();
@@ -30,12 +30,12 @@ public class DayNightCycle : MonoBehaviour
     }
     private void SunRotation()
     {
-        float sunRotation = Mathf.Lerp(-50, 230, timeOfDay / 24);
+        float sunRotation = Mathf.Lerp(-50, 230, timeOfDay / 30);
         sun.transform.rotation = Quaternion.Euler(sunRotation, sun.transform.rotation.y, sun.transform.rotation.z);
     }
     private void UpdateLighting()
     {
-        float timeFraction = timeOfDay / 24;
+        float timeFraction = timeOfDay / 30;
         RenderSettings.ambientEquatorColor = equatorColor.Evaluate(timeFraction);
         RenderSettings.ambientSkyColor = skyColor.Evaluate(timeFraction);
         sun.color = sunColor.Evaluate(timeFraction);

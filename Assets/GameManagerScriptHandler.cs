@@ -105,7 +105,7 @@ public class GameManagerScript : MonoBehaviour
     public void AddStar()
     {
         starCount++;
-        print(starCount);
+        //print(starCount);
     }
 
     private void Update()

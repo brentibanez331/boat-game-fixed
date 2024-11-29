@@ -1,61 +1,57 @@
 ﻿using BoatGame;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class WaterFloat : MonoBehaviour
 {
-    //public properties
+    // Public properties
     public float AirDrag = 1;
     public float WaterDrag = 10;
+    public float SubmergedDrag = 50f; // Drag when submerged
+    public float BuoyancyForceFactor = 1f; // Adjust buoyancy strength
+    public float GravityFactor = 1f; // Adjust gravity influence
     public bool AffectDirection = true;
     public bool AttachToSurface = false;
     public Transform[] FloatPoints;
 
-    //used components
+    // Used components
     protected Rigidbody Rigidbody;
     protected Waves Waves;
 
-    //water line
+    // Water line
     protected float WaterLine;
     protected Vector3[] WaterLinePoints;
 
-    //help Vectors
+    // Help Vectors
     protected Vector3 smoothVectorRotation;
     protected Vector3 TargetUp;
     protected Vector3 centerOffset;
 
     public Vector3 Center { get { return transform.position + centerOffset; } }
 
-    // Start is called before the first frame update
     void Awake()
     {
-        //get components
+        // Get components
         Waves = FindObjectOfType<Waves>();
         Rigidbody = GetComponent<Rigidbody>();
         Rigidbody.useGravity = false;
 
-        //compute center
+        // Compute center
         WaterLinePoints = new Vector3[FloatPoints.Length];
         for (int i = 0; i < FloatPoints.Length; i++)
             WaterLinePoints[i] = FloatPoints[i].position;
         centerOffset = PhysicsHelper.GetCenter(WaterLinePoints) - transform.position;
-
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        //default water surface
+        // Default water surface
         var newWaterLine = 0f;
         var pointUnderWater = false;
 
-        //set WaterLinePoints and WaterLine
+        // Set WaterLinePoints and WaterLine
         for (int i = 0; i < FloatPoints.Length; i++)
         {
-            //height
             WaterLinePoints[i] = FloatPoints[i].position;
             WaterLinePoints[i].y = Waves.GetHeight(FloatPoints[i].position);
             newWaterLine += WaterLinePoints[i].y / FloatPoints.Length;
@@ -66,44 +62,52 @@ public class WaterFloat : MonoBehaviour
         var waterLineDelta = newWaterLine - WaterLine;
         WaterLine = newWaterLine;
 
-        //compute up vector
+        // Compute up vector
         TargetUp = PhysicsHelper.GetNormal(WaterLinePoints);
 
-        //gravity
-        var gravity = Physics.gravity;
+        // Gravity
+        var gravity = Physics.gravity * GravityFactor;
         Rigidbody.drag = AirDrag;
+
         if (WaterLine > Center.y)
         {
-            Rigidbody.drag = WaterDrag;
-            //under water
+            // Under water
+            Rigidbody.drag = SubmergedDrag;
+
             if (AttachToSurface)
             {
-                //attach to water surface
                 Rigidbody.position = new Vector3(Rigidbody.position.x, WaterLine - centerOffset.y, Rigidbody.position.z);
             }
             else
             {
-                //go up
-                gravity = AffectDirection ? TargetUp * -Physics.gravity.y : -Physics.gravity;
-                transform.Translate(Vector3.up * waterLineDelta * 0.9f);
+                // Buoyancy force proportional to submerged volume
+                float submergedVolume = Mathf.Clamp01((WaterLine - Center.y) / centerOffset.y);
+                Vector3 buoyancyForce = -gravity * submergedVolume * BuoyancyForceFactor;
+                Rigidbody.AddForce(buoyancyForce);
             }
         }
-        Rigidbody.AddForce(gravity * Mathf.Clamp(Mathf.Abs(WaterLine - Center.y),0,1));
+        else
+        {
+            // Above water - apply regular gravity
+            Rigidbody.AddForce(gravity);
+        }
 
-        //rotation
+
+        // Rotation
         if (pointUnderWater)
         {
-            //attach to water surface
             TargetUp = Vector3.SmoothDamp(transform.up, TargetUp, ref smoothVectorRotation, 0.2f);
             Rigidbody.rotation = Quaternion.FromToRotation(transform.up, TargetUp) * Rigidbody.rotation;
         }
-
     }
+
 
     public void DestroyObject()
     {
         Destroy(this.gameObject);
     }
+
+
 
     private void OnDrawGizmos()
     {
@@ -118,19 +122,14 @@ public class WaterFloat : MonoBehaviour
 
             if (Waves != null)
             {
-
-                //draw cube
                 Gizmos.color = Color.red;
                 Gizmos.DrawCube(WaterLinePoints[i], Vector3.one * 0.3f);
             }
 
-            //draw sphere
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(FloatPoints[i].position, 0.1f);
-
         }
 
-        //draw center
         if (Application.isPlaying)
         {
             Gizmos.color = Color.red;

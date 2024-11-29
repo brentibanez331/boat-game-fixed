@@ -16,7 +16,7 @@ public class StarScript : MonoBehaviour
         {
             if (gameManager.index < gameManager.starCount)
             {
-                print("Index: " + gameManager.index + "  Stars: " + gameManager.starCount);
+                //print("Index: " + gameManager.index + "  Stars: " + gameManager.starCount);
                 retrieveObj.starUI[gameManager.index].SetBool("playStar", true);
                 gameManager.index++;
             }
