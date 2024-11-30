@@ -2477,7 +2477,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sun: {fileID: 170076734}
   timeOfDay: 12
-  sunRotationSpeed: 0.5
+  defaultSunRotationSpeed: 1
+  endlessSunRotationSpeed: 0.2
+  isEndlessMode: 0
   skyColor:
     serializedVersion: 2
     key0: {r: 0.15294118, g: 0.19607843, b: 0.28235295, a: 1}
@@ -5840,7 +5842,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429218675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06771013, y: -0.0074801403, z: 0.0005076606, w: 0.9976769}
+  m_LocalRotation: {x: 0.06771012, y: -0.00748037, z: 0.0005076762, w: 0.9976769}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6989,8 +6991,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.049551703, y: -0.00748819, z: 0.0003715194, w: 0.9987435}
-  m_LocalPosition: {x: 90.22898, y: 6.267097, z: 139.92432}
+  m_LocalRotation: {x: 0.0495517, y: -0.0074884207, z: 0.00037153088, w: 0.9987435}
+  m_LocalPosition: {x: 90.22899, y: 6.267097, z: 139.92432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9797,7 +9799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -97, y: -127}
+  m_AnchoredPosition: {x: -53, y: -127}
   m_SizeDelta: {x: 101, y: 101}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798149647
@@ -10182,6 +10184,7 @@ MonoBehaviour:
   menuAnim: {fileID: 1775954912}
   buttonName: 
   gameIsPaused: 0
+  isEndless: 0
 --- !u!1 &829187317
 GameObject:
   m_ObjectHideFlags: 0
@@ -14060,6 +14063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 824575572}
+  isEndless: 0
 --- !u!114 &1164305555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14171,6 +14175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 824575572}
+  isEndless: 0
 --- !u!1 &1194307642
 GameObject:
   m_ObjectHideFlags: 0
@@ -14259,6 +14264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 0}
+  isEndless: 0
 --- !u!1001 &1200942190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18506,6 +18512,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1445274840}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1452200304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7896289366250240140, guid: 998901953df68314bb0a2e616325bece,
+    type: 3}
+  m_PrefabInstance: {fileID: 789667951062646292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1458662923
 GameObject:
   m_ObjectHideFlags: 0
@@ -20735,7 +20747,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: -127}
+  m_AnchoredPosition: {x: 43.00002, y: -127}
   m_SizeDelta: {x: 101, y: 101}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603094317
@@ -21272,6 +21284,7 @@ MonoBehaviour:
   text: {fileID: 1586423182}
   score: 0
   gameManager: {fileID: 2127162509}
+  isEndless: 0
 --- !u!4 &1631799005
 Transform:
   m_ObjectHideFlags: 0
@@ -22387,7 +22400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723432827}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.049551696, y: -0.007488172, z: 0.00037151846, w: 0.9987435}
+  m_LocalRotation: {x: 0.049551696, y: -0.0074884035, z: 0.00037152995, w: 0.9987435}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23048,6 +23061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 824575572}
+  isEndless: 0
 --- !u!1 &1787245466
 GameObject:
   m_ObjectHideFlags: 0
@@ -23429,7 +23443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825900221}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.031424884, y: -0.0074936794, z: 0.00023561099, w: 0.999478}
+  m_LocalRotation: {x: 0.031424884, y: -0.007493876, z: 0.00023561719, w: 0.999478}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -26544,7 +26558,7 @@ MonoBehaviour:
   m_YAxis:
     Value: 0.5
     m_SpeedMode: 0
-    m_MaxSpeed: 2
+    m_MaxSpeed: 0
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -26568,7 +26582,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 100
+    m_MaxSpeed: 0
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -26616,7 +26630,7 @@ Transform:
   m_GameObject: {fileID: 2065278578}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 90.22898, y: 6.267097, z: 139.92432}
+  m_LocalPosition: {x: 90.22899, y: 6.267097, z: 139.92432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27407,6 +27421,9 @@ MonoBehaviour:
   index: 0
   retrieveObj: {fileID: 99426122}
   goodsCollected: 0
+  isEndlesss: 0
+  pausebutton: {fileID: 0}
+  boat: {fileID: 1452200304}
   alarmSFX: {fileID: 1264955506}
   tickSFX: {fileID: 464621165}
   levelCompleteFX: {fileID: 1308109647}

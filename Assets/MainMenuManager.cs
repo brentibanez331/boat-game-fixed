@@ -15,10 +15,18 @@ public class MainMenu : MonoBehaviour
     GameObject followTarget;
 
     [HideInInspector] public bool gameIsPaused;
+    public bool isEndless = false;
 
     private void Awake()
     {
-        gameIsPaused = true;
+        if (!isEndless)
+        {
+            gameIsPaused = true;
+        }
+        else
+        {
+            gameIsPaused = false;
+        }
         CloseSettings();
         CloseMenu();
         settingsAnim.gameObject.SetActive(false);
@@ -109,6 +117,7 @@ public class MainMenu : MonoBehaviour
     {
         gameIsPaused = false;
         vCam.Follow = followTarget.transform;
+        print(followTarget);
         vCam.m_XAxis.m_MaxSpeed = 100;
         vCam.m_YAxis.m_MaxSpeed = 2;
         vCam.LookAt = followTarget.transform;

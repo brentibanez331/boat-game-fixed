@@ -11,6 +11,7 @@ public class Bomb : MonoBehaviour
 
     GameManagerScript gameManager;
     CinemachineFreeLook vCam;
+    public bool isEndless = false;
 
     //audio
     public AudioSource bombFX;
@@ -51,7 +52,14 @@ public class Bomb : MonoBehaviour
             gameManager.OpenResult();
             gameManager.playTimer = false;
             gameManager.mainMenu.PauseGame(vCam);
-            gameManager.resultText.text = "LEVEL COMPLETE!";
+            if (!isEndless)
+            {
+                gameManager.resultText.text = "LEVEL COMPLETE!";
+            }
+            else
+            {
+                gameManager.resultText.text = "TRY AGAIN!";
+            }
             
         }
     }

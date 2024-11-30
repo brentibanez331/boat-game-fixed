@@ -6,7 +6,13 @@ public class ShowGoalUI : MonoBehaviour
 {
     public GameManagerScript gameManager;
     public MainMenu mainMenu;
+    public bool isEndless = false;
 
+    private void Awake()
+    {
+        isEndless = gameManager.isEndlesss;
+        print(isEndless);
+    }
     public void ShowUIObjects()
     {
         gameManager.ShowGoal();
@@ -29,7 +35,10 @@ public class ShowGoalUI : MonoBehaviour
         }
         if (mainMenu.GetButtonName().Equals("closehelp"))
         {
-            gameManager.OpenQuest();
+            if (!isEndless)
+            {
+                gameManager.OpenQuest();
+            }
         }
 
         if (mainMenu.GetButtonName().Equals("closemenu"))

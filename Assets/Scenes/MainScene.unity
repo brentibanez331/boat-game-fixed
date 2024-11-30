@@ -2093,7 +2093,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sun: {fileID: 170076734}
   timeOfDay: 12
-  sunRotationSpeed: 0.5
+  defaultSunRotationSpeed: 1
+  endlessSunRotationSpeed: 0.2
+  isEndlessMode: 0
   skyColor:
     serializedVersion: 2
     key0: {r: 0.15294118, g: 0.19607843, b: 0.28235295, a: 1}
@@ -3417,6 +3419,9 @@ MonoBehaviour:
   MaxSpeed: 20
   SteerPower: 50
   Drag: 0.01
+  isEndlessMode: 0
+  resuraceFallDistance: 3
+  resurfaceDelay: 10
   Menu: {fileID: 824575572}
   scoreManager: {fileID: 1631799004}
   crateFX: {fileID: 539374566}
@@ -4398,7 +4403,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429218675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06770722, y: -0.011815593, z: 0.00080189726, w: 0.99763495}
+  m_LocalRotation: {x: 0.06770723, y: -0.011815622, z: 0.0008018996, w: 0.99763495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5226,7 +5231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.049549576, y: -0.011828251, z: 0.00058684684, w: 0.99870145}
+  m_LocalRotation: {x: 0.049549576, y: -0.0118282605, z: 0.00058684725, w: 0.99870145}
   m_LocalPosition: {x: 90.37236, y: 6.267097, z: 132.41708}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7131,6 +7136,7 @@ MonoBehaviour:
   menuAnim: {fileID: 1775954912}
   buttonName: 
   gameIsPaused: 0
+  isEndless: 0
 --- !u!1 &840263221
 GameObject:
   m_ObjectHideFlags: 0
@@ -9311,6 +9317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 824575572}
+  isEndless: 0
 --- !u!114 &1164305555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9507,6 +9514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 824575572}
+  isEndless: 0
 --- !u!1 &1194307642
 GameObject:
   m_ObjectHideFlags: 0
@@ -9595,6 +9603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 0}
+  isEndless: 0
 --- !u!1 &1210041988
 GameObject:
   m_ObjectHideFlags: 0
@@ -12258,6 +12267,7 @@ MonoBehaviour:
   text: {fileID: 1586423182}
   score: 0
   gameManager: {fileID: 2127162509}
+  isEndless: 0
 --- !u!4 &1631799005
 Transform:
   m_ObjectHideFlags: 0
@@ -12758,7 +12768,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723432827}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04954957, y: -0.011828252, z: 0.00058684684, w: 0.99870145}
+  m_LocalRotation: {x: 0.04954957, y: -0.011828257, z: 0.000586847, w: 0.99870145}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13192,6 +13202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 824575572}
+  isEndless: 0
 --- !u!1 &1808646436
 GameObject:
   m_ObjectHideFlags: 0
@@ -19514,7 +19525,7 @@ MonoBehaviour:
   m_YAxis:
     Value: 0.5
     m_SpeedMode: 0
-    m_MaxSpeed: 2
+    m_MaxSpeed: 0
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -19538,7 +19549,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 100
+    m_MaxSpeed: 0
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -19755,6 +19766,9 @@ MonoBehaviour:
   index: 0
   retrieveObj: {fileID: 99426122}
   goodsCollected: 0
+  isEndlesss: 0
+  pausebutton: {fileID: 0}
+  boat: {fileID: 369259165}
   alarmSFX: {fileID: 1264955506}
   tickSFX: {fileID: 464621165}
   levelCompleteFX: {fileID: 1394946216}

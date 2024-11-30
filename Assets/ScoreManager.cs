@@ -10,11 +10,19 @@ public class ScoreManager : MonoBehaviour
     public int score = 0; 
     public GameManagerScript gameManager;
     int maxGoods;
+    public bool isEndless = false;
 
     private void Start()
     {
         maxGoods = gameManager.maxGoods;
-        text.text = gameManager.goodsCollected.ToString() + "/" + maxGoods.ToString();
+        if (isEndless)
+        {  
+            text.text = gameManager.goodsCollected.ToString();
+        }
+        else
+        {
+            text.text = gameManager.goodsCollected.ToString() + "/" + maxGoods.ToString();
+        }
     }
 
 
@@ -22,6 +30,13 @@ public class ScoreManager : MonoBehaviour
     {
         score++;
         gameManager.goodsCollected = score;
-        text.text = score.ToString() + "/" + maxGoods.ToString();
+        if (isEndless)
+        {
+            text.text = score.ToString();
+        }
+        else
+        {
+            text.text = score.ToString() + "/" + maxGoods.ToString();
+        }
     }
 }

@@ -7664,6 +7664,7 @@ MonoBehaviour:
   menuAnim: {fileID: 176526192}
   buttonName: 
   gameIsPaused: 0
+  isEndless: 0
 --- !u!1 &2012310099
 GameObject:
   m_ObjectHideFlags: 0

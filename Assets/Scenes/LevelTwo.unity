@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17277355, g: 0.2158997, b: 0.29783309, a: 1}
+  m_IndirectSpecularColor: {r: 0.17705241, g: 0.22163826, b: 0.30390817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2426,7 +2426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.5150381, y: 0, z: 0, w: 0.8571673}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2470,7 +2470,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sun: {fileID: 170076734}
   timeOfDay: 12
-  sunRotationSpeed: 0.5
+  defaultSunRotationSpeed: 1
+  endlessSunRotationSpeed: 0.2
+  isEndlessMode: 0
   skyColor:
     serializedVersion: 2
     key0: {r: 0.15294118, g: 0.19607843, b: 0.28235295, a: 1}
@@ -4526,6 +4528,9 @@ MonoBehaviour:
   MaxSpeed: 20
   SteerPower: 50
   Drag: 0.01
+  isEndlessMode: 0
+  resuraceFallDistance: 3
+  resurfaceDelay: 10
   Menu: {fileID: 824575572}
   scoreManager: {fileID: 1631799004}
   crateFX: {fileID: 1225964552}
@@ -5472,7 +5477,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429218675}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06771012, y: -0.00748037, z: 0.0005076762, w: 0.9976769}
+  m_LocalRotation: {x: 0.06771014, y: -0.007480405, z: 0.0005076787, w: 0.9976769}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6350,7 +6355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0495517, y: -0.0074884207, z: 0.00037153088, w: 0.9987435}
+  m_LocalRotation: {x: 0.0495517, y: -0.0074883513, z: 0.00037152742, w: 0.9987435}
   m_LocalPosition: {x: 90.22899, y: 6.267097, z: 139.92432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10268,6 +10273,7 @@ MonoBehaviour:
   menuAnim: {fileID: 1775954912}
   buttonName: 
   gameIsPaused: 0
+  isEndless: 0
 --- !u!1 &831203207
 GameObject:
   m_ObjectHideFlags: 0
@@ -14543,6 +14549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 824575572}
+  isEndless: 0
 --- !u!114 &1164305555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14741,6 +14748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 824575572}
+  isEndless: 0
 --- !u!1 &1182283237
 GameObject:
   m_ObjectHideFlags: 0
@@ -15119,6 +15127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 0}
+  isEndless: 0
 --- !u!1 &1209857749
 GameObject:
   m_ObjectHideFlags: 0
@@ -19846,6 +19855,7 @@ MonoBehaviour:
   text: {fileID: 1586423182}
   score: 0
   gameManager: {fileID: 2127162509}
+  isEndless: 0
 --- !u!4 &1631799005
 Transform:
   m_ObjectHideFlags: 0
@@ -20349,7 +20359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723432827}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.049551696, y: -0.0074884035, z: 0.00037152995, w: 0.9987435}
+  m_LocalRotation: {x: 0.049551696, y: -0.0074883685, z: 0.0003715282, w: 0.9987435}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20974,6 +20984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2127162509}
   mainMenu: {fileID: 824575572}
+  isEndless: 0
 --- !u!1 &1780132696
 GameObject:
   m_ObjectHideFlags: 0
@@ -26521,7 +26532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825900221}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.031424884, y: -0.0074939104, z: 0.00023561828, w: 0.999478}
+  m_LocalRotation: {x: 0.031424884, y: -0.007493876, z: 0.00023561719, w: 0.999478}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -29499,6 +29510,9 @@ MonoBehaviour:
   index: 0
   retrieveObj: {fileID: 99426122}
   goodsCollected: 0
+  isEndlesss: 0
+  pausebutton: {fileID: 0}
+  boat: {fileID: 369259165}
   alarmSFX: {fileID: 1264955506}
   tickSFX: {fileID: 464621165}
   levelCompleteFX: {fileID: 831203209}

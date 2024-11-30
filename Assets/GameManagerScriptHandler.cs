@@ -22,6 +22,10 @@ public class GameManagerScript : MonoBehaviour
     public RetrieveObject retrieveObj;
     public int goodsCollected;
 
+    public bool isEndlesss = false;
+    public GameObject pausebutton;
+    public GameObject boat;
+
     //SFX
     public AudioSource alarmSFX;
     public AudioSource tickSFX;
@@ -29,7 +33,8 @@ public class GameManagerScript : MonoBehaviour
 
     private void Awake()
     {
-        for(int i = 0; i < retrieveObj.starUI.Length; i++)
+        mainMenu.GetFollowTarget(boat);
+        for (int i = 0; i < retrieveObj.starUI.Length; i++)
         {
             retrieveObj.starUI[i].SetBool("playStar", false);
         }
@@ -41,12 +46,31 @@ public class GameManagerScript : MonoBehaviour
         else
         {
             CloseTutorial();
-            OpenQuest();    
+
+            if (!isEndlesss)
+            {
+                OpenQuest();
+            }
+            else
+            {
+                CloseQuest();
+            }
         }
         //OpenQuest();
         CloseResult();
-        HideGoal();
-        mainMenu.PauseGame(vCam);
+
+      
+        if (!isEndlesss)
+        {
+            HideGoal();
+            mainMenu.PauseGame(vCam);
+        }
+        else
+        {
+            ShowGoal();
+            mainMenu.ShowObject(pausebutton);
+            mainMenu.ResumeGame(vCam);
+        }
     }
 
     public void ShowGoal()
@@ -80,6 +104,7 @@ public class GameManagerScript : MonoBehaviour
     public void CloseQuest()
     {
         questAnim.SetBool("QuestIsClosed", true);
+
     }
 
     public void StopTimer()
@@ -100,6 +125,7 @@ public class GameManagerScript : MonoBehaviour
     public void CloseResult()
     {
         retrieveObj.ResultUI.GetComponent<Animator>().SetBool("ResultIsClosed", true);
+        mainMenu.ResumeGame(vCam);
     }
 
     public void AddStar()
